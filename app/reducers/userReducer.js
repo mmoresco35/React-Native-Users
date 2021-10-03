@@ -12,12 +12,14 @@ import {
   LOG_USER_FAILURE,
   LOG_OUT,
 } from '../constants';
+
+//initial reducer state
 const initialState = {
   users: undefined,
   login: undefined,
   isFeching: false,
 };
-
+//definition od reducer state changes responding to defined actions
 export default userReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_USER:

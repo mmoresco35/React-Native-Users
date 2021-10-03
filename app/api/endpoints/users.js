@@ -1,7 +1,7 @@
 import * as constants from '../../constants';
 import { useSelector, useDispatch} from 'react-redux';
 const  BASEURL= constants.DEV_URL?constants.API_URL_DEV:constants.API_URL
-
+// api call definition to log user in app
 export const logUser = (login) => {
     let url = constants.API_URL+constants.API_LOGIN
     return fetch(url, {
@@ -19,7 +19,7 @@ export const logUser = (login) => {
         return Promise.all([Response, json]);
     });
 };
-
+// api call definition to register users (creation with no logged session)
 export const signUser = (user) => {
     let url = constants.API_URL+constants.API_SIGNUP
     console.log (url, JSON.stringify(user))
@@ -37,12 +37,10 @@ export const signUser = (user) => {
         return Promise.all([Response]);
     });
 };
-
-
+// api call definition to get users List
 export const fetchUsers = (login) => {
     let bearer = login.tokenType+' '+login.accessToken
     let url = constants.API_URL+constants.API_USERS
-    //hacemos llamada con fecth y recibimos el resultado asincrono en el then
     return fetch(url, {
         method: 'GET',
         headers: {
@@ -58,13 +56,10 @@ export const fetchUsers = (login) => {
             return Promise.all([Response, json]);
         });
 };
-
-
-
+// api call definition to create users (logged users action)
 export const createUser = (user, login) => {
     let bearer = login.tokenType+' '+login.accessToken
     let url = constants.API_URL+constants.API_USERS
-    //hacemos llamada con fecth y recibimos el resultado asincrono en el then
     return fetch(url, {
         method: 'POST',
         headers: {
@@ -78,15 +73,13 @@ export const createUser = (user, login) => {
             if (constants.PAINT_URL){
                 console.log ("create => ",url, JSON.stringify(user), Response)
             }
-            //retornamos la llamada , el parseo del contenido a json y los datos del user
             return Promise.all([Response, json, user]);
         });
 };
-
+// api call definition to update user data
 export const updateUser = (user, login) => {
     let bearer = login.tokenType+' '+login.accessToken
     let url = constants.API_URL+constants.API_USERS+"/"+user.id
-    //hacemos llamada con fecth y recibimos el resultado asincrono en el then
     return fetch(url, {
         method: 'PUT',
         headers: {
@@ -100,15 +93,13 @@ export const updateUser = (user, login) => {
             if (constants.PAINT_URL){
                 console.log ("update => ",url, JSON.stringify(user), Response)
             }
-            //retornamos la llamada , el parseo del contenido a json y los datos del user
             return Promise.all([Response, json, user]);
         });
 };
-
+// api call definition to delete user
 export const delUser = (user, login) => {
     let bearer = login.tokenType+' '+login.accessToken
     let url = constants.API_URL+constants.API_USERS+"/"+user.id
-    //hacemos llamada con fecth y recibimos el resultado asincrono en el then
     return fetch(url, {
         method: 'DELETE',
         headers: {
@@ -121,7 +112,6 @@ export const delUser = (user, login) => {
             if (constants.PAINT_URL){
                 console.log ("update => ",url, JSON.stringify(user), Response)
             }
-            //retornamos la llamada , el parseo del contenido a json y los datos del user
             return Promise.all([Response, json, user]);
         });
 };

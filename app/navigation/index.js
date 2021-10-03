@@ -1,17 +1,18 @@
-/*import { createStackNavigator , createAppContainer} from 'react-navigation-stack';
-import {List, Operator} from '../components'
+import React from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import List from '../components/list'
+import Operator from '../components/operator'
 
-const Stack = createStackNavigator({
-  list:{
-    screen:List
-  },
-  operator:{
-    screen:Operator
-  }
-},{
-  initialRouteName: 'list',
-  headerMode: 'none'
-});
+//definition of stack application navigation, app uses 2 containers to allow all functionality
+const Stack = createNativeStackNavigator();
 
+function AppStack() {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="List" component={List} />
+      <Stack.Screen name="Operator" component={Operator} />
+    </Stack.Navigator>
+  );
+}
 
-export default createAppContainer(Stack);*/
+export default AppStack;

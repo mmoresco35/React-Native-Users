@@ -1,24 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {
-  FlatList,
-  TouchableOpacity,
-  Text,
-  View,
-  ActivityIndicator,
-  Dimensions,
-} from 'react-native';
-import ListItem from '../listItem';
-import * as userActions from '../../actions/userActions';
-import {useSelector, useDispatch} from 'react-redux';
-
-function Button( props) {
-    console.log ("button",props)
-    return (
-      
-    <TouchableOpacity
-      style={{flex: 1, backgroundColor: 'white', padding: '2%', margin: '2%'}}
-      onPress={props.action}>
-      <Text style={{textAlign: 'center'}}>{props.text}</Text>
+import React from 'react';
+import {TouchableOpacity, Text} from 'react-native';
+import styles from '../../styles';
+// widget to make all buttons get same style
+function Button(props) {
+  return (
+    <TouchableOpacity style={styles.button} onPress={props.action}>
+      <Text style={styles.buttonText}>{props.text}</Text>
     </TouchableOpacity>
   );
 }
